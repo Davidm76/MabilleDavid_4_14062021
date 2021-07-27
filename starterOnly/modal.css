@@ -35,10 +35,10 @@ img {
   margin: 3.5%;
 }
 .header-logo {
-    float: left;
+  float: left;
 }
 .main-navbar {
-    float: right;
+  float: right;
 }
 .topnav a {
   float: left;
@@ -68,39 +68,6 @@ img {
   display: none;
 }
 
-@media screen and (max-width: 768px) {
-  .topnav a {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .topnav.responsive {position: relative;}
-  .topnav.responsive .icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  .topnav.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-}
-
-
-
- @media screen and (max-width: 540px) {
-  .topnav a {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
-    margin-top: -15px;
-  }
-} 
-
 main {
   font-size: 130%;
   font-weight: bolder;
@@ -111,8 +78,6 @@ main {
   margin: 1px 20px 15px;
   border-radius: 2rem;
   text-align: justify;
-
-
 }
 
 .modal-btn {
@@ -208,6 +173,11 @@ input {
   font-size: 20px;
   height: 48px;
 }
+
+.ma_bordure {
+  border: red;
+}
+
 .formData[data-error]::after {
   content: attr(data-error);
   font-size: 0.4em;
@@ -478,7 +448,65 @@ footer {
   padding-right: 2vw;
   margin: 0 20px;
 }
-@media screen and (max-width: 800px) {
+
+@media screen and (max-width: 1366px) {
+  /* responsive ipad pro */
+  .main-navbar {
+    float: left;
+    padding-top: 20px;
+  }
+
+  .hero-text {
+    width: 100%;
+    font-size: 2rem;
+  }
+
+  .hero-section {
+    display: block;
+  }
+
+  .btn-signup {
+    margin: 3rem auto;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  
+}
+
+@media screen and (max-width: 768px) {
+  .topnav a {
+    display: none;
+  }
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+  .topnav.responsive {
+    position: relative;
+  }
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  main {
+    margin: 0;
+    padding: 0;
+  }
+
+  .main-navbar {
+    float: right;
+    padding-top: 0px;
+  }
+  .topnav.responsive a {
+    text-align: right;
+  }
   .hero-section {
     display: block;
     box-shadow: unset;
@@ -487,6 +515,7 @@ footer {
     background: #fff;
     color: #000;
     padding: 20px;
+    min-width: 100%;
   }
   .hero-content::after {
     content: unset;
@@ -495,16 +524,19 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 4.5rem;
+    font-size: 2.5rem;
     white-space: normal;
+    text-align: center;
   }
   .hero-text {
     width: unset;
     font-size: 1.5rem;
+    text-align: center;
+    margin-top: 25px;
   }
   .hero-img img {
     border-radius: 10px;
-    margin-top: 40px;
+    margin-top: 20px;
   }
   .hero-section > .btn-signup {
     display: block;
@@ -527,3 +559,34 @@ footer {
   }
 }
 
+.error {
+  color: red;
+  border: 1px solid red;
+}
+
+#error_1,
+#error_2,
+#error_3,
+#error_4,
+#error_5,
+#error_6,
+#error_7 {
+  color: red;
+  font-size: 1rem;
+}
+
+.error_checkbox {
+  color: red;
+}
+
+.valide {
+  border: 1px solid green;
+}
+
+.valide_checkbox {
+  color: green;
+}
+
+.message_validation {
+  color: green;
+}

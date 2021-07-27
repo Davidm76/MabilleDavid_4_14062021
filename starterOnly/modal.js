@@ -13,7 +13,6 @@ const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const close = document.querySelectorAll(".close");
 
-
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
@@ -23,8 +22,7 @@ function launchModal() {
 }
 
 // close modal event
-close.forEach(span => span.addEventListener("click", closeModal));
-
+close.forEach((span) => span.addEventListener("click", closeModal));
 
 // close modal form
 function closeModal() {
@@ -33,141 +31,195 @@ function closeModal() {
 
 // Regex //
 
-let checkString = /^[a-zA-Z]{2}/;
-let checkMail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+let checkString = /^[a-zA-Z]{2}/; // regex texte //
+let checkMail =
+  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/; // regex mail //
 
 // prénom //
 
-function verifPrenom() {
-  let prenom = form.elements["prenom"];
-  let error = document.getElementById("erreur_prenom");
+let prenom = document.getElementById("first");
+let error1 = document.getElementById("error_1");
+function checkPrenom() {
   if (checkString.test(prenom.value) === false) {
-    prenom.classList.add("input_erreur");
-    error.innerText = "Saississez un prénom valide";
+    prenom.classList.add("error");
+    error1.textContent = "Saississez un prénom valide";
     return false;
   } else {
-    prenom.classList.remove("input_erreur");
-    prenom.classList;add("input_valide");
-    error.innerText = "";
+    prenom.classList.remove("error");
+    error1.textContent = "";
+    prenom.classList.add("valide");
     return true;
   }
 }
 
 // nom //
 
-function verifNom() {
-  let nom = form.elements["nom"];
-  let error = document.getElementById("erreur_nom");
+let nom = document.getElementById("last");
+let error2 = document.getElementById("error_2");
+
+function checkNom() {
   if (checkString.test(nom.value) === false) {
-    nom.classList.add("input_erreur");
-    error.innerText = "Saississez un nom valide";
+    nom.classList.add("error");
+    error2.textContent = "saississez un nom valide";
     return false;
   } else {
-    nom.classList.remove("input_erreur");
-    nom.classList;add("input_valide");
-    error.innerText = "";
+    nom.classList.remove("error");
+    error2.textContent = "";
+    nom.classList.add("valide");
     return true;
   }
 }
 
 // email //
 
-function verifEmail() {
-  let email = form.elements["email"];
-  let error = document.getElementById("erreur_email");
+let email = document.getElementById("email");
+let error3 = document.getElementById("error_3");
+
+function checkEmail() {
   if (checkMail.test(email.value) === false) {
-    email.classList.add("input_erreur");
-    error.innerText = "Saississez un email valide";
+    email.classList.add("error");
+    error3.textContent = "saississez un email valide";
     return false;
   } else {
-    email.classList.remove("input_erreur");
-    email.classList;add("input_valide");
-    error.innerText = "";
+    email.classList.remove("error");
+    error3.textContent = "";
+    email.classList.add("valide");
     return true;
   }
 }
 
-// date //
+// Date de naissance //
 
-// participation //
+let birthdayDate = document.querySelector("input[type=date]");
+let birthday = document.getElementById("birthday");
+let error4 = document.getElementById("error_4");
+
+function checkBirthday() {
+  if (birthdayDate.value === "") {
+    birthday.classList.add("error");
+    birthday.classList.remove("valide");
+    error4.textContent = "saississez une date de naissance valide";
+    return false;
+  } else {
+    birthday.classList.remove("error");
+    error4.textContent = "";
+    birthday.classList.add("valide");
+    return true;
+  }
+}
+
+// Participation //
+
+let participationNumber = document.querySelector("input[type=number]");
+let participation = document.getElementById("quantity");
+let error5 = document.getElementById("error_5");
+
+function checkParticipation() {
+  if (!participationNumber.value) {
+    participation.classList.add("error");
+    participation.classList.remove("valide");
+    error5.textContent = "veuillez remplir le champs";
+    console.log(participationNumber.value);
+    return false;
+  } else {
+    participation.classList.remove("error");
+    error5.textContent = "";
+    participation.classList.add("valide");
+    console.log("test " + participationNumber.value);
+    return true;
+  }
+}
 
 // villes //
 
-// condition d'utilisation //
+/*var checkRadio = document.querySelectorAll("input[type=radio]");
+var chkRadioL = checkRadio.length;
 
-// newsletter //
+document.querySelector("form").addEventListener("change", function () {
+  for (var i = 0; i < checkRadio.length; i++) {
+    if (checkRadio[i].checked === true) {console.log("1");
+      break;
+    } 
+  }
+});*/
 
-//test //
+// la fonction permet de vérifié chaque input radio et voir si checked //
 
-//var validation = document.getElementById('bouton_envoi');
-//var prenom = document.getElementById('first');
-//var prenom_m = document.getElementById('prenom_manquant');
-//validation.addEventListener('click', f_valid);
+let checkRadio = document.querySelectorAll("input[type=radio]");
+let error7 = document.getElementById("error_7");
 
-//function f_valid(e) {
-//  if (prenom.validity.valueMissing) {
-//    e.preventDefault();
-//    prenom_m.textContent = 'veuillez renseigner un prénom';
-//    prenom_m.style.color = 'red';
-//  }
-//}
+function villes() {
+  for (i = 0; i < checkRadio.length; i++) {
+    if (checkRadio[i].checked) {
+      console.log(checkRadio.value);
+      error7.innertext = "";
+      return true; // stop la boucle si une valeur est trouvé //
+    }
+  }
+  // si aucun input radio est coché alors message d'erreur //
+  error7.innertext = "Vous devez choisir une option";
+  return false;
+}
 
-// nom //
+/*function checkVille() {
+  let checkRadio = document.querySelectorAll("input[type=radio]");
+  let error7 = document.getElementById("error_7");
+  for (i = 0; i < checkRadio.length; i++) {
+    if (checkRadio[i].checked) {
+      error7.innerText= "";
+      return true;
+    }
+  }
+  error7.innerText = "Vous devez choisir une option";
+  return false;
+}*/
 
-//var validation = document.getElementById('bouton_envoi');
-//var nom = document.getElementById('last');
-//var nom_m = document.getElementById('nom_manquant');
-//validation.addEventListener('click', f_valid);
+// Condition d'utilisation //
 
-//function f_valid(e) {
-//  if (nom.validity.valueMissing) {
-//    e.preventDefault();
-//    nom_m.textContent = 'veuillez renseigner un nom';
-//    nom_m.style.color = 'red';
-//  }
-//}
+let terme = document.getElementById("checkbox1");
+let error6 = document.getElementById("error_6");
 
-// email //
+function conditionUtil() {
+  if (!terme.checked) {
+    terme.classList.add("error_checkbox");
+    error6.textContent = "Cocher les conditions d'utilisations";
+    return false;
+  } else {
+    terme.classList.remove("error_checkbox");
+    error6.textContent = "";
+    terme.classList.add("valide_checkbox");
+    return true;
+  }
+}
 
-//var validation = document.getElementById('bouton_envoi');
-//var email = document.getElementById('email');
-//var email_m = document.getElementById('email_manquant');
-//validation.addEventListener('click', f_valid);
-
-//function f_valid(e) {
-//  if (email.validity.valueMissing) {
-//    e.preventDefault();
-//    email_m.textContent = 'veuillez renseigner un email';
-//    email_m.style.color = 'red';
-//  }
-//}
-
-// message de validation //
-//    document.getElementById("") .addEventListener("submit", function(e) {
-//      e.preventDefault();
-
-//      var erreur;
-//      var first = document.getElementById("first")
-//      var last = document.getElementById("last")
-//      var email = document.getElementById("email")
-
-//      if (!first.value) {
-//        erreur = "Veuillez renseigner un prénom"
-//      }
-//      if (!last.value) {
-//        erreur = "Veuillez renseigner un nom"
-//      }
-//      if (!email.value) {
-//        erreur = "Veuillez renseigner un email"
-//      }
-
-//      if (erreur) {
-//        e.preventDefault();
-//        document.getElementById("erreur") .innerHTML = erreur
-//      } else {
-//          alert('Thank you for submitting your registration details');
-//        }
-   
+// Validation formulaire //
 
 
-// fin test //
+
+
+function validationFormulaire(event) {
+  const myform = document.forms[0];
+  if (checkPrenom() === false) {
+    return false;
+  } else if (checkNom() === false) {
+    return false;
+  } else if (checkEmail() === false) {
+    return false;
+  } else if (checkBirthday() === false) {
+    return false;
+  } else if (checkParticipation() === false) {
+    return false;
+  } else if (checkVille() === false) {
+    return false;
+  } else if (conditionUtil() === false) {
+    return false;
+  } else {
+    event.preventDefault();
+    myform.remove();
+    let modal = document.querySelector("div.modal-body");
+    let message = document.createElement("p");
+    message.classlist.add("message_validation");
+    message.textContent = "Merci pour votre inscription";
+    modal.appendChild(message);
+  }
+}
